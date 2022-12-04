@@ -23,6 +23,8 @@ export default function App() {
           <Route path="/categoriesdetails" element={<CategoryDetails/>} />
           <Route path="/categoryedit" element={<CategoryEdit />} />
           <Route path="/categoryadd" element={<CategoryAdd/>} />
+          <Route path="/categoryadded" element={<CategoryAdd/>} />
+
 
 
           
