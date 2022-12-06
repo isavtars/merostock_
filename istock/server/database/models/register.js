@@ -12,7 +12,7 @@ import  validator  from "validator";
     email:{
         type:String,
         required:true,
-        //custome validate  with   validators
+        //custome validate  with   validators ss
         validate(value){
           
             if(!validator.isEmail(value)){
