@@ -38,6 +38,13 @@ import  validator  from "validator";
 
         type:String,
         required:true
+     },
+     //consult with experts
+
+     admin:{
+        type:Boolean,
+        default:true,
+        required:true,
      }
 
 
@@ -46,6 +53,6 @@ import  validator  from "validator";
 
 
 
-const registerModel = new mongoose.model("istock",registerusers)
+const registerModel = new mongoose.model("merocollection",registerusers)
 
 export default registerModel;
