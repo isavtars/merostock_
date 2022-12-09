@@ -1,7 +1,7 @@
 import express from "express"
 import "dotenv/config"
 import authrouter from "./router/Authenticate.js"
-
+import productrouter from  "./router/Product.js"
 
 import connections from "../database/connections.js" //always
 
@@ -20,6 +20,8 @@ app.get("/",(req,res)=>{
 })
 //authrouting
 app.use("/auth",authrouter)
+//addproductrouting
+app.use("/productapi",productrouter)
 
 
 
@@ -30,3 +32,6 @@ app.listen(port,()=>{
     connections();
 
 })
+
+
+

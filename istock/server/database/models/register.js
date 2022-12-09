@@ -53,6 +53,6 @@ import  validator  from "validator";
 
 
 
-const registerModel = new mongoose.model("merocollection",registerusers)
+const registerModel = new mongoose.model("authentication",registerusers)
 
 export default registerModel;
