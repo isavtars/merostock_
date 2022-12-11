@@ -4,24 +4,19 @@ const Dashboard = () => {
   return (
     <>
 
-    {/* Responsive for large Devices */}
-      <div className="hidden xl:block bg-[#EBF5FF]">
+    {/* Responsive Dashboard */}
+    <div className="bg-[#EBF5FF] -mt-10 pt-5">
         <div className="xl:flex xl:justify-between">
-            <div className="lg:w-1/4">
+            <div className="xl:w-1/4 hidden xl:block mt-5">
                 <LeftPart />
             </div>
-            <div className="lg:w-3/4">
+            <div className="xl:w-3/4">
                 <div>
                 <RightPart />
                 </div>
           </div>
         </div>
       </div>
-
-      {/* Responsive for small devices */}
-      <div className="block xl:hidden bg-[#EBF5FF] -mt-10 pt-5">
-      <RightPart />
-        </div>
     </>
   );
 };

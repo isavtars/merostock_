@@ -8,7 +8,7 @@ import ProductEdit from "../Pages/Product/ProductEdit";
 const LeftPart = () => {
   const [show, setShow] = useState(false);
   return (
-    <div className="md:fixed  font-primaryText md:m-3  lg:m-10 lg:px-8 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900 to-indigo-500 text-white fill-current rounded-xl">
+    <div className="xl:fixed hidden xl:block  font-primaryText md:m-3  lg:m-10 lg:px-8 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900 to-indigo-500 text-white fill-current rounded-xl">
       <div className="flex p-5 items-center ">
         <svg
           className="svg-icon h-10 w-10"
@@ -54,13 +54,13 @@ const LeftPart = () => {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="w-6 h-6 mt-1 ml-5"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M19.5 8.25l-7.5 7.5-7.5-7.5"
               />
             </svg>
@@ -71,7 +71,7 @@ const LeftPart = () => {
           <div className="ml-10 p-3">
             {show && (
               <div>
-                <Link to="/productdetails">Product Details</Link>
+                <Link to="/productdetails">Product List</Link>
                 <br />
                 <Link to="/productadd">Product Add</Link>
                 <br />
@@ -81,55 +81,7 @@ const LeftPart = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-items-start space-x-4 ml-1 p-5 items-center  hover:text-[#E74694] fill-current">
-        
-        <div className="w-full -mb-5">
-          <div className="flex justify-between">
-            <div className="flex justify-center items-center gap-x-5 " onClick={() => setShow(!show)}>
-            <svg
-          className="svg-icon h-5 w-5"
-          viewBox="0 0 1024 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M872.802928 755.99406 872.864326 755.99406 872.864326 755.624646Z" />
-          <path d="M165.847747 442.249403c-36.401048 0-65.924455 28.551266-65.924455 63.803141 0 35.266202 29.523407 63.863517 65.924455 63.863517 36.429701 0 65.954131-28.597315 65.954131-63.863517C231.801878 470.831368 202.277448 442.249403 165.847747 442.249403M363.666138 239.675708l527.454994 0c18.22713 0 32.95353-14.284331 32.95353-31.894408 0-17.640776-14.7264-31.93841-32.95353-31.93841L363.666138 175.842891c-18.200524 0-32.985252 14.297634-32.985252 31.93841C330.680886 225.391377 345.465614 239.675708 363.666138 239.675708M165.847747 740.551346c-36.401048 0-65.924455 28.567639-65.924455 63.819514s29.523407 63.84919 65.924455 63.84919c36.429701 0 65.954131-28.596292 65.954131-63.84919S202.277448 740.551346 165.847747 740.551346M891.121132 474.15916 363.666138 474.15916c-18.200524 0-32.985252 14.283308-32.985252 31.894408 0 17.655102 14.784728 31.939433 32.985252 31.939433l527.454994 0c18.22713 0 32.95353-14.283308 32.95353-31.939433C924.074661 488.442468 909.349285 474.15916 891.121132 474.15916M165.847747 143.933133c-36.401048 0-65.924455 28.595268-65.924455 63.848167 0 35.222199 29.523407 63.804165 65.924455 63.804165 36.429701 0 65.954131-28.581965 65.954131-63.804165C231.801878 172.528402 202.277448 143.933133 165.847747 143.933133M891.121132 772.47543 363.666138 772.47543c-18.200524 0-32.985252 14.254655-32.985252 31.895431s14.784728 31.895431 32.985252 31.895431l527.454994 0c18.22713 0 32.95353-14.254655 32.95353-31.895431S909.349285 772.47543 891.121132 772.47543" />
-        </svg>
-        <a href="#" className="text-xl">
-          Categories
-        </a>
-            <div>
-            <svg 
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 mt-1 ml-5"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-              />
-            </svg>
-            </div>
-            </div>
-            
-          </div>
-          <div className="ml-10 p-3">
-            {show && (
-              <div>
-                <Link to="/categoriesdetails">Categories Details</Link>
-                <br />
-                <Link to="/categoryadd">Category Add</Link>
-                <br />
-                <Link to="/categoryedit" >Category Edit</Link>
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
+      
       <div className="flex justify-items-start space-x-6 ml-0.5 p-5 items-center hover:text-[#E74694] fill-current">
         <svg
           className="svg-icon h-6 w-6"

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import profile from "../assets/profile.jpg";
-import svg_com from './svg_com'
+
 
 
 const NavBar = () => {
@@ -9,23 +9,24 @@ const NavBar = () => {
   let [open, setOpen] = useState(false);
   return (
     <>
-    {/* Responsive for large Devices */}
-      <div className="hidden xl:block">
-        <nav className="flex justify-between items-center">
-          <div class="flex items-center xl:ml-8">
-            <div class="relative">
-              <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+    {/* Responsive Navbar */}
+      <div className="">
+          <nav className="mx-5 items-center md:flex md:justify-between">
+            {/* search section */}
+            <div className="relative">
+              <div className="flex px-2 absolute inset-y-0 left-0 items-center  pointer-events-none">
+    
                 <svg
                   aria-hidden="true"
-                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                     d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
               </div>
@@ -37,22 +38,23 @@ const NavBar = () => {
                 required=""
               />
             </div>
-          </div>
+          
+            {/* profile section */}
+            <div className="flex items-center justify-center my-5 space-x-2">
+              <div className="font-primaryText ">
+                <h1 className="font-bold cursor-pointer">Bishal Pariyar</h1>
+                <h6>Admin Profile</h6>
+                
+              </div>
 
-          <div className="flex items-center justify-center space-x-2">
-            <div className="font-primaryText">
-              <h1 className="font-bold cursor-pointer">Bishal Pariyar</h1>
-              <h6>Admin Profile</h6>
-            </div>
-
-            <div className="flex items-center ">
-              <img
-                src={profile}
-                alt="image"
-                className="w-12 h-12 object-cover rounded-full mr-4 cursor-pointer"
-              />
+              <div className="flex items-center ">
+                <img
+                  src={profile}
+                  alt="image"
+                  className="w-12 h-12 object-cover rounded-full mr-4 cursor-pointer"
+                />
               <svg
-                className="svg-icon w-8 h-8 mr-6 cursor-pointer"
+                className="svg-icon w-5 h-5 mr-6 cursor-pointer"
                 viewBox="0 0 1024 1024"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -62,65 +64,15 @@ const NavBar = () => {
                   fill="#333333"
                 />
               </svg>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-    {/* Responsive for small devices */}
-      <div className="block xl:hidden">
-          <div class="mx-5 items-center">
-            <div class="relative">
-              <div class="flex px-2 absolute inset-y-0 left-0 items-center  pointer-events-none">
-                <svg
-                  aria-hidden="true"
-                  class="w-5 h-5 text-gray-500 dark:text-gray-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
               </div>
-              <input
-                type="text"
-                id="simple-search"
-                className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search"
-                required=""
-              />
-            </div>
-          </div>
 
-          <div className="flex items-center justify-center my-5 space-x-5">
-            <div className="font-primaryText ">
-              <h1 className="font-bold cursor-pointer">Bishal Pariyar</h1>
-              <h6>Admin Profile</h6>
-              
+              <div className="cursor-pointer block xl:hidden" >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6" onClick={()=>setOpen(!open)}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              </div>
             </div>
-
-            <div className="flex items-center ">
-              <img
-                src={profile}
-                alt="image"
-                className="w-12 h-12 object-cover rounded-full mr-4 cursor-pointer"
-              />
-             <svg_com/>
-            </div>
-
-            <div className="cursor-pointer" onClick={()=>setOpen(!open)}>
-              {
-              
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-            }
-            </div>
-          </div>
+          </nav>
       </div>
     </>
   );

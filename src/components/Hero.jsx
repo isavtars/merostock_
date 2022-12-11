@@ -72,7 +72,7 @@ const Hero = () => {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
                           clipRule="evenodd"
                         ></path>
@@ -178,7 +178,7 @@ const Hero = () => {
                 </div>
 
           {/* Recent Transactions table */}
-          <div className="xl:mx-5 overflow-auto border-2 rounded-lg p-1 font-primaryText bg-[#EBF5FF]">
+              <div className="xl:mx-5 overflow-auto border-2 rounded-lg p-1 mx-2 font-primaryText bg-[#EBF5FF]">
             <h1 className="text-xl  font-bold p-3">Recent Transactions</h1>
             <span className="p-4">Show <input className="w-12" type="text" /> entries</span>
                 <table className="table-auto w-full text-left whitespace-no-wrap">
@@ -186,8 +186,6 @@ const Hero = () => {
                     <tr className="border-b-2">
                       <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm rounded-tl rounded-bl">ID</th>
                       <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">ITEM</th>
-                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">CUSTOMER NAME</th>
-                      <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">PAYMENT INFO</th>
                       <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm">PRICE</th>
                     </tr>
                   </thead>
@@ -195,39 +193,26 @@ const Hero = () => {
                     <tr className="border-b-2">
                       <td className="px-4 py-3">#Order-28414</td>
                       <td className="px-4 py-3">ladies Pant</td>
-                      <td className="px-4 py-3">Bishal Pariyar</td>
-                      <td className="px-4 py-3 text-lg text-gray-900">Esewa</td>
                       <td className="w-10 text-center">Nrs . 1500</td>
                     </tr>
                     <tr className="border-b-2">
-                    <td className="px-4 py-3">#Order-28415</td>
+                      <td className="px-4 py-3">#Order-28414</td>
                       <td className="px-4 py-3">ladies Pant</td>
-                      <td className="px-4 py-3">Bishal Pariyar</td>
-                      <td className="px-4 py-3 text-lg text-gray-900">Esewa</td>
                       <td className="w-10 text-center">Nrs . 1500</td>
                     </tr>
                     <tr className="border-b-2">
-                    <td className="px-4 py-3">#Order-28416</td>
+                      <td className="px-4 py-3">#Order-28414</td>
                       <td className="px-4 py-3">ladies Pant</td>
-                      <td className="px-4 py-3">Bishal Pariyar</td>
-                      <td className="px-4 py-3 text-lg text-gray-900">Esewa</td>
                       <td className="w-10 text-center">Nrs . 1500</td>
                     </tr>
                     <tr className="border-b-2">
-                    <td className="px-4 py-3">#Order-28417</td>
+                      <td className="px-4 py-3">#Order-28414</td>
                       <td className="px-4 py-3">ladies Pant</td>
-                      <td className="px-4 py-3">Bishal Pariyar</td>
-                      <td className="px-4 py-3 text-lg text-gray-900">Esewa</td>
                       <td className="w-10 text-center">Nrs . 1500</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
-    </div>
-
-    {/* Responsive for Mobile Devices */}
-    <div>
 
     </div>
     </>

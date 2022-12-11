@@ -15,7 +15,7 @@ const CategoryAdd = () => {
             <div className="mt-10">
               <NavBar />
               <div>
-                {/* hero section */}
+                
                 <div className="flex justify-between ml-10 mt-5 border-b-2 pb-2">
                   <div>
                     <h1 className="text-3xl font-primaryText font-semibold">
@@ -30,7 +30,7 @@ const CategoryAdd = () => {
                 </div>
 
                 <div className="flex justify-between mx-10 mt-5 space-x-5">
-                  {/* left */}
+                 
                   <div className="w-1/4 space-y-2">
                     <div className="border-2 rounded-lg p-2 bg-white cursor-pointer">
                       <div className="flex items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
@@ -73,7 +73,7 @@ const CategoryAdd = () => {
                       </div>
                       <div className="items-center p-2">
                         <label
-                          for="countries_multiple"
+                          htmlFor="countries_multiple"
                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                           Categories Selected
@@ -257,7 +257,7 @@ const CategoryAdd = () => {
 
                             <div className="flex items-center justify-center w-full">
                               <label
-                                for="dropzone-file"
+                                htmlFor="dropzone-file"
                                 className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                               >
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
@@ -270,9 +270,9 @@ const CategoryAdd = () => {
                                     xmlns="http://www.w3.org/2000/svg"
                                   >
                                     <path
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round"
-                                      stroke-width="2"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                      strokeWidth="2"
                                       d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                                     ></path>
                                   </svg>
