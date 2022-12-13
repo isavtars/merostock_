@@ -51,7 +51,7 @@ if(emails){
   
 
    const haspass= await bcrypt.hash(passw,10);
-   const hascpass= await bcrypt.hash(passw,10);
+   const hascpass= await bcrypt.hash(cpassw,10);
     try{
      if(passw===cpassw){
 

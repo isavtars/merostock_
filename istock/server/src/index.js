@@ -2,6 +2,7 @@ import express from "express"
 import "dotenv/config"
 import authrouter from "./router/Authenticate.js"
 import productrouter from  "./router/Product.js"
+import cors from "cors"
 
 import connections from "../database/connections.js" //always
 
@@ -11,6 +12,7 @@ import connections from "../database/connections.js" //always
 const port=process.env.PORT;
 const app=express()
 app.use(express.json())
+app.use(cors())
 
 
 //route
@@ -20,10 +22,10 @@ app.get("/",(req,res)=>{
 })
 //authrouting
 app.use("/auth",authrouter)
-//addproductrouting
+
+
+//productRoute
 app.use("/productapi",productrouter)
-
-
 
 
 //server listting
@@ -32,6 +34,3 @@ app.listen(port,()=>{
     connections();
 
 })
-
-
-

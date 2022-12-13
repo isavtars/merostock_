@@ -26,7 +26,7 @@ import  validator  from "validator";
     },
     phone:{
         type:Number,
-        required:true
+        // required:true
     },
 
      password:{
