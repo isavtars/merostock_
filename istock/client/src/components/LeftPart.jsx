@@ -71,11 +71,11 @@ const LeftPart = () => {
           <div className="ml-10 p-3">
             {show && (
               <div>
-                <Link to="/productdetails">Product List</Link>
+                <Link to="/dashboard/productdetails">Product List</Link>
                 <br />
-                <Link to="/productadd">Product Add</Link>
+                <Link to="/dashboard/productadd">Product Add</Link>
                 <br />
-                <Link to="/productedit" >Product Edit</Link>
+                <Link to="/dashboard/productedit" >Product Edit</Link>
               </div>
             )}
           </div>

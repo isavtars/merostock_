@@ -53,7 +53,7 @@ const navigate=useNavigate();
         <div className="flex p-3 items-center text-purple-900 ">
           <img src="/shop.png" alt="logo" className="w-10 h-10" />
           <h2 className="text-3xl font-bold mx-2 font-primaryText ">
-            PasalStock
+            MeroStock
           </h2>
         </div>
       </nav>

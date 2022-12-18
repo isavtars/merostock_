@@ -27,11 +27,18 @@ console.log(user)
     <BrowserRouter>
       <Routes>
 
-          <Route path='/' element={<Login/>}/>
+          
           <Route path='/register' element={<Register/>}/>
+         
 
-          <Route path='/' element={user? <Navigate to="/dashboard" replace />:<Login/>}></Route>
+          <Route path='/login' element={user? <Navigate to="/dashboard" replace />:<Login/>}></Route>
+       
+          <Route path='/dashboard' element={!user? <Navigate to="/login" replace />:<Dashboard />}></Route>
 
+          <Route path='/dashboard/productdetails' element={!user? <Navigate to="/login" replace />:<ProductDetails />}></Route>
+          <Route path='/dashboard/productadd' element={!user? <Navigate to="/login" replace />:<ProductAdd/>}></Route>
+          <Route path='/dashboard/productedit' element={!user? <Navigate to="/login" replace />:<ProductEdit/>}></Route>
+          
          {
           
           user&&(

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LeftPart from '../../components/LeftPart'
 import NavBar from '../../components/NavBar'
 
@@ -6,6 +6,12 @@ import NavBar from '../../components/NavBar'
 
 
 const ProductAdd = () => {
+
+const [input ,setinput]=useState({});
+  const handleChange=(e)=>{
+    setinput({...input,[e.target.name]:e.target.value})
+    console.log(input)
+  }
   return (
     <>
       <div className="bg-[#EBF5FF] pt-4">
@@ -42,8 +48,10 @@ const ProductAdd = () => {
                               Product Price Old
                             </label>
                             <input
-                              type="text"
+                              type="number"
                               id="simple-search"
+                              name='productOldprice'
+                              onChange={handleChange}
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nrs. 2000"
                               required=""
@@ -54,7 +62,9 @@ const ProductAdd = () => {
                               Product Price New
                             </label>
                             <input
-                              type="text"
+                              type="number"
+                              name='newPrice'
+                              onChange={handleChange}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nrs. 5000"
@@ -78,13 +88,15 @@ const ProductAdd = () => {
                         </label>
                         <select
                           multiple
+                          name='category'
                           id="countries_multiple"
+                          onChange={handleChange}
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         >
-                          <option value="">Pants</option>
-                          <option value="">Shirts</option>
-                          <option value="">Shoes</option>
-                          <option value="">Jackets</option>
+                          <option value="Pants">Pants</option>
+                          <option value="Shirts">Shirts</option>
+                          <option value="Shoes">Shoes</option>
+                          <option value="Jackets">Jackets</option>
                         </select>
                       </div>
                     </div>
