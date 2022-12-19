@@ -6,9 +6,41 @@ import { Link } from 'react-router-dom'
 const ProductAdd = () => {
 
 const [input ,setinput]=useState({});
+
+const [item,setitem]=useState("");
+const [todolist,settodolist]=useState([])
   const handleChange=(e)=>{
     setinput({...input,[e.target.name]:e.target.value})
     console.log(input)
+  }
+  const todo=(e)=>{
+    setitem(e.target.value)
+    console.log(item)
+  }
+  const hitlistitem=()=>{
+    if(item){
+      settodolist((olditems)=>{
+        return [...olditems,item]
+        
+      })
+      setitem("")
+    }
+  
+    
+    
+  }
+
+
+  //todolist
+  const deleteTodo=(id)=>{
+    
+    const newItem = todolist.filter((item,index)=>{
+      return index !==id;
+    })
+
+    settodolist(newItem)
+    console.log("button clcked")
+
   }
   return (
     <>
@@ -76,6 +108,14 @@ const [input ,setinput]=useState({});
                     <div className="border-2 rounded-lg p-2 bg-white cursor-pointer mb-3">
                       <div className="items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
                         <h1 className="font-semibold">Categories</h1>
+
+                      </div>
+                      <div className='todoworks'>
+                      <div className="inputbar">
+                      <input type="text" onChange={todo} placeholder="type your product item" value={item}/>
+                      <button onClick={hitlistitem}>Add</button>
+                      </div>
+                      
                       </div>
                       <div className="items-center p-2">
                         <label
@@ -84,18 +124,27 @@ const [input ,setinput]=useState({});
                         >
                           Categories Selected
                         </label>
-                        <select
+                        <div
                           multiple
                           name='category'
                           id="countries_multiple"
                           onChange={handleChange}
+                         
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         >
-                          <option value="Pants">Pants</option>
-                          <option value="Shirts">Shirts</option>
-                          <option value="Shoes">Shoes</option>
-                          <option value="Jackets">Jackets</option>
-                        </select>
+                        {
+                          todolist.map((itemval,index)=>{
+                           return <>
+                           <div key={index} value={itemval}>
+                           {itemval} 
+                           <button key={`{index+1}`} style={{"backgroundColor":"red"}} onClick={(()=>deleteTodo(index))}>delete</button>                         
+                           </div>
+                          
+                           </>
+                          })
+                        }
+                     
+                        </div>
                       </div>
                     </div>
                     {/* size info */}
