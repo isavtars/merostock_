@@ -9,12 +9,8 @@ import ProductEdit from './Pages/Product/ProductEdit';
 import Login from './components/Login';
 import Register from './components/Register';
 import SingleProduct from './Pages/Product/SingleProduct';
-
-
 import { useSelector } from 'react-redux';
-
-
-
+import Profile from './Pages/ProfilePage/Profile';
 
 export default function App() {
 
@@ -31,9 +27,9 @@ console.log(user)
           <Route path='/register' element={<Register/>}/>
          
 
-          <Route path='/login' element={user? <Navigate to="/dashboard" replace />:<Login/>}></Route>
+          <Route path='/' element={user? <Navigate to="/dashboard" replace />:<Login/>}></Route>
        
-          <Route path='/dashboard' element={!user? <Navigate to="/login" replace />:<Dashboard />}></Route>
+          <Route path='/dashboard' element={!user? <Navigate to="/" replace />:<Dashboard />}></Route>
 
           <Route path='/dashboard/productdetails' element={!user? <Navigate to="/login" replace />:<ProductDetails />}></Route>
           <Route path='/dashboard/productadd' element={!user? <Navigate to="/login" replace />:<ProductAdd/>}></Route>
@@ -44,17 +40,20 @@ console.log(user)
           user&&(
           <Route path='/dashboard' element={<Dashboard />}>
           <Route index element={<Dashboard />} />
+          
           <Route path="productdetails" element={<ProductDetails />} />
           <Route path="productedit" element={<ProductEdit/>} />
           <Route path="productadd" element={<ProductAdd/>} />
           <Route path="singleproduct" element={<SingleProduct/>} />
+          <Route path="profile" element={<Profile/>} />
+          
+   
           </Route>  )
 
           
 
           
          }
-
 
 
 

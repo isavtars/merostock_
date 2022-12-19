@@ -36,102 +36,103 @@ const ProductDetails = () => {
                  />
                   </div>
                   </div>
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase">
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead className="text-xs text-gray-700 uppercase">
                         <tr>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 ID
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 Product
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 Category
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 Stock
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 In Stock
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 Price
                             </th>
-                            <th scope="col" class="py-3 px-6">
+                            <th scope="col" className="py-3 px-6">
                                 Date Added
                             </th>
                         </tr>
                     </thead>
                     <tbody>  
-                        <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="py-4 px-6"> 
+                        <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
+                            <td className="py-4 px-6"> 
                             1
                             </td>
-                            <th scope="row" class="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
                                 <h2>Shirt</h2>
+                                
                             </th>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 plane shirt
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 20
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 20
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 Nrs.2999
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 2022-08-12
                             </td>
                         </tr>
-                        <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="py-4 px-6"> 
+                        <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
+                            <td className="py-4 px-6"> 
                             1
                             </td>
-                            <th scope="row" class="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
                                 <h2>Shirt</h2>
                             </th>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 plane shirt
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 20
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 20
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 Nrs.2999
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 2022-08-12
                             </td>
                         </tr>
-                        <tr class="border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td class="py-4 px-6"> 
+                        <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
+                            <td className="py-4 px-6"> 
                             1
                             </td>
-                            <th scope="row" class="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
                                 <h2>Shirt</h2>
                             </th>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 plane shirt
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 20
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 20
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 Nrs.2999
                             </td>
-                            <td class="py-4 px-6">
+                            <td className="py-4 px-6">
                                 2022-08-12
                             </td>
                         </tr>

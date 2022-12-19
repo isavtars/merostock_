@@ -66,8 +66,8 @@ const LeftPart = () => {
             </svg>
             </div>
             </div>
-            
           </div>
+          
           <div className="ml-10 p-3">
             {show && (
               <div>

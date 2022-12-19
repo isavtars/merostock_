@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import LeftPart from '../../components/LeftPart'
 import NavBar from '../../components/NavBar'
-
-
-
+import { Link } from 'react-router-dom'
 
 const ProductAdd = () => {
 
@@ -314,6 +312,7 @@ const [input ,setinput]=useState({});
                     <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full">
                       Add
                     </button>
+                    <Link to="/userprofile">go to profile</Link>
                   </div>
                   </div>   
                 </div>
