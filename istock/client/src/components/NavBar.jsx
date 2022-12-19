@@ -2,9 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import profile from "../assets/profile.jpg";
+import { loginStart, loginSuccess, loginFailure, logout } from "../redux/userReducer"
+import { useDispatch,useSelector } from 'react-redux';
 
 const NavBar = () => {
   let [open, setOpen] = useState(false);
+  const dispatch=useDispatch();
   return (
     <>
       {/* Responsive Navbar */}
@@ -112,7 +115,7 @@ const NavBar = () => {
                               />
                             </svg>
                           </div>
-                          <div className="">Logout</div>
+                          <div onClick={()=>dispatch(logout())}>Logout</div>
                         </div>
                       </Link>
                     </div>

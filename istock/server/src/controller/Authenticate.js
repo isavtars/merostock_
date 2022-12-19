@@ -59,7 +59,7 @@ if(emails){
 
       const data = new registerModel({...req.body,password:haspass, confirmpassword:hascpass});
       const response= await data.save();
-      res.json(response);
+      res.json({success:true,response});
 
      }else{
 

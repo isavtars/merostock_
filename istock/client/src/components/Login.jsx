@@ -33,8 +33,10 @@ const navigate=useNavigate();
       console.log(response.data.sucess)
       if(response.data.sucess){
         dispatch(loginSuccess(response.data));
+        swal("Good job!", "Login Success!", "success");
         navigate("/dashboard")
       }else{
+        swal("oops!", "Login Failed!", "error");
         console.log("login failed")
       }
     
