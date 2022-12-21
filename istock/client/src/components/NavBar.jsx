@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import profile from "../assets/profile.jpg";
 import { loginStart, loginSuccess, loginFailure, logout } from "../redux/userReducer"
 import { useDispatch,useSelector } from 'react-redux';
@@ -11,7 +11,7 @@ const NavBar = () => {
   return (
     <>
       {/* Responsive Navbar */}
-      <div className="">
+      <div className=" font-primaryText">
         <nav className="mx-5 items-center md:flex md:justify-between">
           {/* search section */}
           <div className="relative">
@@ -46,11 +46,11 @@ const NavBar = () => {
               <h6>Admin Profile</h6>
             </div>
 
-            <div className="flex items-center ">
+            <div className="flex items-center">
               <img
                 src={profile}
                 alt="image"
-                className="w-12 h-12 object-cover rounded-full mr-4 cursor-pointer"
+                className="w-16 h-16 object-top object-cover rounded-full mr-4 cursor-pointer shadow-sm shadow-slate-900"
               />
 
               <div>
@@ -70,11 +70,29 @@ const NavBar = () => {
                 {open && (
                   <div className="absolute right-20 xl:right-12 z-10 w-46 mt-4 origin-top-right bg-white border border-gray-100 rounded-md shadow-lg">
                     
-                    <div className="p-2">
+                    <div className="p-5 xl:w-52 xl:h-52">
+
+                  <div className="flex justify-around items-center mb-2">
+                    <div>
+                      <img
+                src={profile}
+                alt="image"
+                className="w-10 h-10 object-cover rounded-full mr-4 cursor-pointer"
+              />
+              </div>
+                    <div>
+                      <h1 className="font-semibold cursor-pointer text-sm">Bishal Pariyar</h1>
+                       <h6 className="text-sm">Admin Profile</h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="pt-3">
+
+                    {/* profile */}
                     <Link to="/dashboard/profile"
                         className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700 font-primaryText" > 
 
-                        <div className="flex items-center justify-between space-x-2">
+                        <div className="flex items-center justify-start space-x-3">
                           <div>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +112,21 @@ const NavBar = () => {
                           <div>Profile Page</div>
                         </div>
                       </Link>
+                    {/* Help */}
+                      <Link to=""
+                        href="#"
+                        className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700 font-primaryText">
+                        <div className="flex items-center justify-start space-x-3">
+                          <div className="">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                      </svg>
+                          </div>
+                          <div className="">Help Us</div>
+                        </div>
+                      </Link>
 
+                      {/* logout */}
                       <Link to=""
                         href="#"
                         className="block px-4 py-2 text-sm text-gray-500 rounded-lg hover:bg-gray-50 hover:text-gray-700 font-primaryText">
@@ -118,6 +150,11 @@ const NavBar = () => {
                           <div onClick={()=>dispatch(logout())}>Logout</div>
                         </div>
                       </Link>
+
+                      
+
+
+                      </div>
                     </div>
                   </div>
                 )}

@@ -25,9 +25,6 @@ const [todolist,settodolist]=useState([])
       })
       setitem("")
     }
-  
-    
-    
   }
 
 
@@ -39,12 +36,12 @@ const [todolist,settodolist]=useState([])
     })
 
     settodolist(newItem)
-    console.log("button clcked")
+    console.log("button clicked")
 
   }
   return (
     <>
-      <div className="bg-[#EBF5FF] pt-4">
+      <div className="bg-[#EBF5FF] pt-4 font-primaryText">
         <div className="xl:flex xl:justify-between">
             <div className="xl:w-1/4 hidden xl:block">
                 <LeftPart />
@@ -105,15 +102,15 @@ const [todolist,settodolist]=useState([])
                       </div>
                     </div>
                     {/* categories info */}
-                    <div className="border-2 rounded-lg p-2 bg-white cursor-pointer mb-3">
+                    <div className="border-2 rounded-lg p-2 bg-white cursor-pointer    mb-3">
                       <div className="items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
                         <h1 className="font-semibold">Categories</h1>
 
                       </div>
-                      <div className='todoworks'>
-                      <div className="inputbar">
-                      <input type="text" onChange={todo} placeholder="type your product item" value={item}/>
-                      <button onClick={hitlistitem}>Add</button>
+                      <div className=''>
+                      <div className="flex justify-start gap-x-1 xl:justify-between items-center">
+                        <div className='ml-2'><input className='w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" onChange={todo} placeholder="Add Category" value={item}/></div>
+                        <div><button className='border-1 rounded-md p-1.5 bg-indigo-500 text-white' onClick={hitlistitem}>Add</button></div>  
                       </div>
                       
                       </div>
@@ -129,15 +126,18 @@ const [todolist,settodolist]=useState([])
                           name='category'
                           id="countries_multiple"
                           onChange={handleChange}
-                         
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        >
+                          className="">
                         {
                           todolist.map((itemval,index)=>{
                            return <>
-                           <div key={index} value={itemval}>
+                           <div className='flex justify-start gap-x-1 xl:justify-between items-center'>
+                           <div className='w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' key={index} value={itemval}>
                            {itemval} 
-                           <button key={`{index+1}`} style={{"backgroundColor":"red"}} onClick={(()=>deleteTodo(index))}>delete</button>                         
+                           </div>
+
+                           <div>
+                           <button className='xl:ml-2 border-1 rounded-md p-1.5 text-white bg-[#f44336]  my-2' key={`{index+1}`}  onClick={(()=>deleteTodo(index))}>delete</button>                         
+                           </div>
                            </div>
                           
                            </>
@@ -152,60 +152,43 @@ const [todolist,settodolist]=useState([])
                       <div className="items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
                         <h1 className="font-semibold">Selected Sizes</h1>
                       </div>
-                      <div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">XS</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">S</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">M</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">L</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">XL</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">XXL</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
+                      <div className=''>
+                      <div className="flex justify-start gap-x-1 xl:justify-between items-center">
+                        <div className='ml-2'><input className='w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' type="text" onChange={todo} placeholder="Add Sizes" value={item}/></div>
+                        <div><button className='border-1 rounded-md p-1.5 bg-indigo-500 text-white' onClick={hitlistitem}>Add</button></div>  
+                      </div>
+                      
+                      </div>
+                      <div className="items-center p-2">
+                        <label
+                          htmlFor="countries_multiple"
+                          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        >
+                          Size Selected
+                        </label>
+                        <div
+                          multiple
+                          name='category'
+                          id="countries_multiple"
+                          onChange={handleChange}
+                          className="">
+                        {
+                          todolist.map((itemval,index)=>{
+                           return <>
+                           <div className='flex justify-start gap-x-1 xl:justify-between items-center'>
+                           <div className='w-36 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' key={index} value={itemval}>
+                           {itemval} 
+                           </div>
+
+                           <div>
+                           <button className='xl:ml-2 border-1 rounded-md p-1.5 text-white bg-[#f44336]  my-2' key={`{index+1}`}  onClick={(()=>deleteTodo(index))}>delete</button>                         
+                           </div>
+                           </div>
+                          
+                           </>
+                          })
+                        }
+                     
                         </div>
                       </div>
                     </div>
@@ -361,7 +344,7 @@ const [todolist,settodolist]=useState([])
                     <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full">
                       Add
                     </button>
-                    <Link to="/userprofile">go to profile</Link>
+                    
                   </div>
                   </div>   
                 </div>
