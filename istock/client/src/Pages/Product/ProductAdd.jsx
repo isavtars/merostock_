@@ -1,7 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect} from 'react'
 import LeftPart from '../../components/LeftPart'
 import NavBar from '../../components/NavBar'
-import { Link } from 'react-router-dom'
+
+import {storage} from "../../../fireBaseConfig.js"
+import { v4 } from "uuid";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  listAll,
+  list,
+} from "firebase/storage";
+
 
 const ProductAdd = () => {
 
@@ -39,6 +49,37 @@ const [todolist,settodolist]=useState([])
     console.log("button clicked")
 
   }
+
+  //firebasestore
+  const [imageUpload, setImageUpload] = useState(null);
+  const [imageUrls, setImageUrls] = useState([]);
+  const imagesListRef = ref(storage, "images/");
+
+  const uploadFile = () => {
+    let text = "Press a button!\nEither OK or Cancel.";
+  if (confirm(text) == true) {
+    if (imageUpload == null) return;
+    const imageRef = ref(storage,` images/${imageUpload.name + v4()}`);
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageUrls((prev) => [...prev, url]);      
+      });
+    });
+  } else {
+    text = "You canceled!";
+  } 
+  };
+  useEffect(() => {
+    listAll(imagesListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageUrls((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
+
+
   return (
     <>
       <div className="bg-[#EBF5FF] pt-4 font-primaryText">
@@ -296,6 +337,14 @@ const [todolist,settodolist]=useState([])
                               Upload an Image
                             </label>
 
+                            
+                            {imageUrls.length>0 ? imageUrls.map((url,index) => {
+                              return <img src={url} key={index}/>
+                            })
+                            :
+                           ("helloo")
+                          }
+                              {/*helo to the good night*/}
                             <div className="flex items-center justify-center w-full">
                               <label
                                 htmlFor="dropzone-file"
@@ -327,13 +376,18 @@ const [todolist,settodolist]=useState([])
                                     SVG, PNG, JPG or GIF (MAX. 800x400px)
                                   </p>
                                 </div>
-                                <input
-                                  id="dropzone-file"
-                                  type="file"
-                                  className="hidden"
-                                />
+                                { /*firebase images inputs*/}
+                               <input
+                               id="dropzone-file"
+                               type="file"
+                               className="hidden"
+                               onClick={(e) => {
+                                 setImageUpload(e.target.files[0]);
+                               }}
+                             />
                               </label>
                             </div>
+                            {/*helo to the good night*/}
                           </div>
                         </div>
                       </div>
@@ -341,7 +395,7 @@ const [todolist,settodolist]=useState([])
 
                     {/* Add Button */}
                   <div className="items-center mx-3">
-                    <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full">
+                    <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full" onClick={uploadFile}>
                       Add
                     </button>
                     
@@ -355,4 +409,4 @@ const [todolist,settodolist]=useState([])
   )
 }
 
-export default ProductAdd
+export default ProductAdd;
