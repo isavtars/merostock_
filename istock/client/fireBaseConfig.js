@@ -2,11 +2,11 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
-// TODO: Add SDKs for Firebase products that you want to use
+// TODO: Add SDKs htmlFor Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// htmlFor Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCcYxDjVhz4yBQmveY6ns_vIi899VLLLOs",
   authDomain: "merostock-4fce7.firebaseapp.com",

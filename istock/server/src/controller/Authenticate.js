@@ -71,7 +71,7 @@ if(emails){
       res.send(err)
     }
   }
-  //for testing
+  //htmlFor testing
   async homecontroller(req,res){
 
     if(req.decode.admin){

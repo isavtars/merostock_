@@ -120,7 +120,7 @@ const navigate=useNavigate();
                     </label>
                   </div>
                   <a href="#!" className="text-gray-800">
-                    Forgot password?
+                    htmlForgot password?
                   </a>
                 </div>
 

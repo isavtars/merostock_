@@ -1,11 +1,18 @@
-import React from "react";
+import React,{useState} from "react";
 import LeftPart from "../../components/LeftPart";
 import NavBar from "../../components/NavBar";
 import profile from "../.././assets/profile.jpg";
 import { Link } from "react-router-dom";
 
+
+// Profileedits
+import Profileedits from "../../components/models/Profileredits/Profileedits.jsx"
+
 const Profile = () => {
+  const [open,setopen]=useState(false)
+
   return (
+    
     <>
       <div className="bg-[#EBF5FF] pt-4 font-primaryText">
         <div className="xl:flex xl:justify-between">
@@ -24,6 +31,7 @@ const Profile = () => {
               {/* profile display */}
               <div className="lg:flex space-y-2 lg:space-y-0 lg:space-x-2 lg:mr-3">
                 {/* left */}
+                
                 <div className="lg:w-2/4">
                   <div className="border-2 rounded-lg p-2 bg-white cursor-pointer">
                     <div className="flex justify-between mx-2">
@@ -31,9 +39,12 @@ const Profile = () => {
                         <h1 className="font-semibold text-lg">Profile</h1>
                       </div>
                       <div>
-                        <button className="border-1 rounded-md p-2 bg-indigo-500 text-white">
-                          Edit
+                        <button  onClick={() => setopen(!open)} className="border-1 rounded-md p-2 bg-indigo-500 text-white">
+                         eidit
                         </button>
+                      {open && <Profileedits setopen={setopen} />}
+                      <Profileedits  />
+                
                       </div>
                     </div>
 
