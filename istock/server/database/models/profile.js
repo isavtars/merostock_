@@ -29,9 +29,9 @@ phone:{
 
 image:{
     type:String,
-    required:true,
+    
 },
-subname:{
+shopname:{
     type:String,
       required:true,
    },
@@ -45,11 +45,11 @@ subname:{
       default:"Nepal",
 
    },
-   provision:{
+   province:{
     type:String,
       required:true,
    },
-   state:{
+   postalcode:{
     type:Number,
       required:true,
    },

@@ -2,15 +2,32 @@ import React,{useState} from "react";
 import LeftPart from "../../components/LeftPart";
 import NavBar from "../../components/NavBar";
 import profile from "../.././assets/profile.jpg";
+import api from "../../api/constUrl"
 import { Link } from "react-router-dom";
 
 
 // Profileedits
 import Profileedits from "../../components/models/Profileredits/Profileedits.jsx"
+import { async } from "@firebase/util";
 
 const Profile = () => {
   const [open,setopen]=useState(false)
 
+  const[profileuser,setprofileuser]=useState("")
+  const formsubmitchange=(e)=>{
+    setprofileuser({...profileuser,[e.target.name]:e.target.value})
+    console.log(profileuser)
+  }
+  const formsubmit=async(e)=>{
+    e.preventDefault();
+  try{
+  const response =await api.post("profileapi/profilepost",profileuser)
+  console.log(response.data)
+  
+  }catch(error){
+  console.log(error)
+  }
+  }
   return (
     
     <>
@@ -40,10 +57,10 @@ const Profile = () => {
                       </div>
                       <div>
                         <button  onClick={() => setopen(!open)} className="border-1 rounded-md p-2 bg-indigo-500 text-white">
-                         eidit
+                         edit
                         </button>
-                      {open && <Profileedits setopen={setopen} />}
-                      <Profileedits  />
+                      {open && <Profileedits open={open} setopen={setopen} />}
+                  
                 
                       </div>
                     </div>
@@ -158,6 +175,7 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Your Name</label>
                         <input
+                        onChange={formsubmitchange}
                           name="name"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -168,7 +186,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Your Number</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="number"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -181,7 +200,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Your Email</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="email"
                           type="email"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -191,7 +211,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Shop Name</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="shopname"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -202,7 +223,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Shop Address</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="address"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -214,7 +236,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Province/State</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="province"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -224,7 +247,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Country</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="country"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -234,7 +258,8 @@ const Profile = () => {
                       <div className="mb-6">
                         <label htmlFor="" className="font-medium text-xl">Postal Code</label>
                         <input
-                          name="name"
+                        onChange={formsubmitchange}
+                          name="postalcode"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""
@@ -245,6 +270,7 @@ const Profile = () => {
                       <div className="lg:text-left">
                         <button
                           type="submit"
+                          onClick={formsubmit}
                           className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase        rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg           focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150            ease-in-out"
                         >
                           Save
