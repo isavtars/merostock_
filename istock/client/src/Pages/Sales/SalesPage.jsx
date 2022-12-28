@@ -2,7 +2,7 @@ import React from 'react'
 import LeftPart from '../../components/LeftPart'
 import NavBar from '../../components/NavBar'
 
-const Returns = () => {
+const SalesPage = () => {
   return (
     <>
       <div className="bg-[#EBF5FF] pt-4 font-primaryText">
@@ -16,76 +16,59 @@ const Returns = () => {
                 </div>
 
                 <div className="space-y-3 md:flex md:items-center md:justify-between md:mx-3 border-b-2 lg:ml-8 mb-3 pb-3">
-                  <div>
-                    <h1 className="text-center text-2xl font-primaryText font-semibold lg:ml-6 ">
-                      Returns Items
-                    </h1>
-                    </div>  
-                  <div>
-                  <button className="flex justify-center mx-auto lg:flex lg:justify-between items-center space-x-1 border-1 rounded-md p-2 bg-indigo-500 text-white lg:w-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-
-                     <h3>Add Return items</h3>
-                    </button>
-                  </div>
+                    <h1 className="text-center text-3xl  font-bold lg:ml-6 ">
+                      Sales
+                    </h1>  
                 </div>
                 {/* product list */}
-                <div className="lg:ml-8 h-screen lg:mx-3 border-2 rounded-md">   
+                <div className="border-2 rounded-lg p-2 lg:mx-3 items-center mb-5  lg:ml-8 ">   
                 <div className="overflow-x-auto relative w-full">
-                  <div className="md:flex md:justify-between space-y-3">
-                  <span className="p-3">Show <input className="w-12 h-8" type="text" /> entries</span>
-                  <div className="xl:mr-5 mx-3">
-                 <input
-                type="text"
-                id="simple-search"
-                className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                placeholder="Search"
-                required=""
-                 />
-                  </div>
-                  </div>
-
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead className="text-xs text-gray-700 uppercase border-b-2">
-                        <tr>
+                     <div className="lg:ml-6 lg:mb-3">
+                         <h2 className='text-xl font-medium'>Sales Summary</h2>
+                    </div>
+                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 ">
+                    <thead className="text-xs text-gray-700 uppercase">
+                        <tr className='border-y-2'>
                             <th scope="col" className="py-3 px-6">
                                 ID
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Items
+                                Product
+                            </th>        
+                            <th scope="col" className="py-3 px-6">
+                                Quantity
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Customer
-                            </th>                          
-                            <th scope="col" className="py-3 px-6">
-                                Return Date
+                                Price
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Total
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Actions
-                            </th>
+                                Action
+                            </th>   
                         </tr>
                     </thead>
+                    
                     <tbody>  
                         <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                             <td className="py-4 px-6"> 
                             1
                             </td>
+                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
+                                <h2>Shirt</h2>
+                                
+                            </th>
                             <td className="py-4 px-6">
-                               shirt
+                            <input
+                              type="number"
+                              id="simple-search"
+                              name=''
+                              className="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md"
+                              placeholder="1"
+                              required=""
+                            />
                             </td>
                             <td className="py-4 px-6">
-                                Bibek 
-                            </td>
-                            <td className="py-4 px-6">
-                                2022-12-25
-                            </td>
-                            <td className="py-4 px-6">
-                                Nrs.2000
+                                Nrs.2999
                             </td>
                             <td className="py-4 px-6">
                             <div className='flex justify-start gap-x-2'>
@@ -102,22 +85,27 @@ const Returns = () => {
                                 </div>
                             </td>
                         </tr>
-
                         <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                             <td className="py-4 px-6"> 
                             1
                             </td>
+                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
+                                <h2>Shirt</h2>
+                                
+                            </th>
                             <td className="py-4 px-6">
-                               shirt
+                            <input
+                              type="number"
+                              id="simple-search"
+                              name=''
+                              className="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md"
+                              placeholder="1"
+                              required=""
+                            />
                             </td>
                             <td className="py-4 px-6">
-                                Bibek 
-                            </td>
-                            <td className="py-4 px-6">
-                                2022-12-25
-                            </td>
-                            <td className="py-4 px-6">
-                                Nrs.2000
+                                Nrs.2999
                             </td>
                             <td className="py-4 px-6">
                             <div className='flex justify-start gap-x-2'>
@@ -134,22 +122,27 @@ const Returns = () => {
                                 </div>
                             </td>
                         </tr>
-
                         <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                             <td className="py-4 px-6"> 
                             1
                             </td>
+                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
+                                <h2>Shirt</h2>
+                                
+                            </th>
                             <td className="py-4 px-6">
-                               shirt
+                            <input
+                              type="number"
+                              id="simple-search"
+                              name=''
+                              className="w-24 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md"
+                              placeholder="1"
+                              required=""
+                            />
                             </td>
                             <td className="py-4 px-6">
-                                Bibek 
-                            </td>
-                            <td className="py-4 px-6">
-                                2022-12-25
-                            </td>
-                            <td className="py-4 px-6">
-                                Nrs.2000
+                                Nrs.2999
                             </td>
                             <td className="py-4 px-6">
                             <div className='flex justify-start gap-x-2'>
@@ -166,9 +159,31 @@ const Returns = () => {
                                 </div>
                             </td>
                         </tr>
+                       
+                        
                     </tbody>
-                </table>
+                    </table>
+                    <div className="float-right p-2  cursor-pointer space-y-3 mt-5">
+                        <div className='flex justify-around space-x-3 mx-5'>
+                            <div><h3 className='font-medium'>Subtotal Price:</h3></div>
+                            <div><h4>Nrs.5050</h4></div>
+                        </div>
+                        <div className='flex justify-around space-x-3 mx-5'>
+                            <div><h3 className='font-medium'>Discount:</h3></div>
+                            <div><h4>Nrs.50</h4></div>
+                        </div>
+                        <hr />
+                        <div className='flex justify-around space-x-3 mx-5'>
+                            <div><h3 className='font-medium'>Total Price:</h3></div>
+                            <div><h4>Nrs.5000</h4></div>
+                        </div>
+                             
+                    </div>
                 </div>
+                <hr className='my-3' />
+                 <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full">
+                      Sell Items
+                    </button>
                 </div>
             </div>
           </div>
@@ -177,4 +192,4 @@ const Returns = () => {
   )
 }
 
-export default Returns
+export default SalesPage

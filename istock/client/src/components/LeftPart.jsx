@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
 import ProductAdd from "../Pages/Product/ProductAdd";
 import ProductDetails from "../Pages/Product/ProductDetails";
 import ProductEdit from "../Pages/Product/ProductEdit";
+import SalesPage from "../Pages/Sales/SalesPage";
 
 const LeftPart = () => {
   const [show, setShow] = useState(false);
+  const [Ishow, setIshow] = useState(false);
+  const [Eshow, setEshow] = useState(false);
+  const [Cshow, setCshow] = useState(false);
+
+
   return (
-    <div className="xl:fixed hidden xl:block  font-primaryText md:m-3  lg:m-10 lg:px-8 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900 to-indigo-500 text-white fill-current rounded-xl">
+    <div className="xl:fixed hidden xl:block  font-primaryText md:m-3  lg:m-10 lg:px-8 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900 to-indigo-500 text-white fill-current rounded-xl h-[520px] overflow-y-scroll  scrollbar scrollbar-thumb-blue-500 scrollbar-thin scrollbar-thumb    
+    ">
       <div className="flex p-5 items-center ">
         <svg
           className="svg-icon h-10 w-10"
@@ -33,11 +39,12 @@ const LeftPart = () => {
           Dashboard
         </a>
       </div>
+      {/* product */}
       <div className="flex justify-items-start space-x-4 ml-1 p-5 items-center  hover:text-[#E74694] fill-current">
         
         <div className="w-full -mb-5">
           <div className="flex justify-between">
-            <div className="flex justify-center items-center gap-x-5 " onClick={() => setShow(!show)}>
+            <div className="flex justify-center items-center gap-x-5 cursor-pointer " onClick={() => setShow(!show)} >
             <svg
           className=" h-5 w-5"
           viewBox="0 0 1024 1024"
@@ -68,35 +75,26 @@ const LeftPart = () => {
             </div>
           </div>
           
-          <div className="ml-10 p-3">
+          <div className="ml-10 p-3 text-white">
             {show && (
               <div>
-                <Link to="/dashboard/productdetails">Product List</Link>
+                <Link to="/dashboard/productdetails" className="hover:text-[#E74694]">Product List</Link>
                 <br />
-                <Link to="/dashboard/productadd">Product Add</Link>
+                <Link to="/dashboard/productadd" className="hover:text-[#E74694]">Product Add</Link>
                 <br />
-                <Link to="/dashboard/productedit" >Product Edit</Link>
+                <Link to="/dashboard/productedit"  className="hover:text-[#E74694]">Product Edit</Link>
               </div>
             )}
           </div>
         </div>
-      </div>
-      
-      <div className="flex justify-items-start space-x-6 ml-0.5 p-5 items-center hover:text-[#E74694] fill-current">
-        <svg
-          className="svg-icon h-6 w-6"
-          viewBox="0 0 1024 1024"
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M341.8624 153.6C346.0608 119.9232 374.784 93.866667 409.6 93.866667h204.8c34.816 0 63.5392 26.056533 67.7376 59.733333H827.733333c37.704533 0 68.266667 30.562133 68.266667 68.266667v640c0 37.704533-30.562133 68.266667-68.266667 68.266666H196.266667c-37.704533 0-68.266667-30.562133-68.266667-68.266666V221.866667c0-37.704533 30.562133-68.266667 68.266667-68.266667h145.595733z m0 51.2H196.266667a17.066667 17.066667 0 0 0-17.066667 17.066667v640a17.066667 17.066667 0 0 0 17.066667 17.066666h631.466666a17.066667 17.066667 0 0 0 17.066667-17.066666V221.866667a17.066667 17.066667 0 0 0-17.066667-17.066667h-145.595733c-4.1984 33.6768-32.925867 59.733333-67.7376 59.733333H409.6c-34.816 0-63.5392-26.056533-67.7376-59.733333zM409.6 145.066667a17.066667 17.066667 0 0 0-17.066667 17.066666v34.133334a17.066667 17.066667 0 0 0 17.066667 17.066666h204.8a17.066667 17.066667 0 0 0 17.066667-17.066666v-34.133334a17.066667 17.066667 0 0 0-17.066667-17.066666H409.6z m52.8896 463.095466l186.794667-186.794666a25.6 25.6 0 1 1 36.206933 36.202666l-201.847467 201.8432a25.770667 25.770667 0 0 1-2.794666 3.310934 25.514667 25.514667 0 0 1-8.546134 5.653333 24.9472 24.9472 0 0 1-28.16-5.661867 26.5088 26.5088 0 0 1-2.3424-2.833066l-105.770666-105.770667a25.6 25.6 0 1 1 36.202666-36.202667l90.257067 90.2528z" />
-        </svg>
-        <a href="#" className="text-xl">
-          Sales
-        </a>
-      </div>
-      <div className="flex justify-items-start space-x-6 ml-1 p-5 items-center hover:text-[#E74694] fill-current">
-        <svg
+      </div>  
+      {/* inventory */}
+      <div className="flex justify-items-start space-x-4 ml-1 p-5 items-center  hover:text-[#E74694] fill-current">
+        
+        <div className="w-full -mb-5">
+          <div className="flex justify-between">
+            <div className="flex justify-center items-center gap-x-5 cursor-pointer" onClick={() => setIshow(!Ishow)}>
+            <svg
           className="svg-icon h-6 w-6"
           viewBox="0 0 1024 1024"
           version="1.1"
@@ -106,12 +104,107 @@ const LeftPart = () => {
           <path d="M927.97 384a31.83 31.83 0 0 1-16.74-4.75L512 133.57 112.77 379.25c-15.05 9.26-34.76 4.57-44.02-10.48-9.26-15.05-4.57-34.76 10.48-44.02l416-256a31.993 31.993 0 0 1 33.54 0l416 256c15.05 9.26 19.74 28.97 10.48 44.02-6.04 9.82-16.54 15.23-27.28 15.23zM344 832h-60c-5.52 0-10-4.48-10-10v-60c0-5.52 4.48-10 10-10h60c5.52 0 10 4.48 10 10v60c0 5.52-4.48 10-10 10zM344 704h-60c-5.52 0-10-4.48-10-10v-60c0-5.52 4.48-10 10-10h60c5.52 0 10 4.48 10 10v60c0 5.52-4.48 10-10 10zM474 832h-60c-5.52 0-10-4.48-10-10v-60c0-5.52 4.48-10 10-10h60c5.52 0 10 4.48 10 10v60c0 5.52-4.48 10-10 10zM474 704h-60c-5.52 0-10-4.48-10-10v-60c0-5.52 4.48-10 10-10h60c5.52 0 10 4.48 10 10v60c0 5.52-4.48 10-10 10zM601 960a24.999 24.999 0 0 1-23.52-33.46l41-114c1.66-4.62 4.65-8.65 8.59-11.59l208-155a25.029 25.029 0 0 1 18.64-4.68 25 25 0 0 1 16.45 9.93l80 109c3.94 5.37 5.58 12.1 4.54 18.68a25.026 25.026 0 0 1-10.06 16.38l-205 148a24.945 24.945 0 0 1-12.23 4.61l-124 12c-0.81 0.09-1.61 0.13-2.41 0.13z m61.98-123.45l-25.09 69.77 77.97-7.55 179.08-129.29-50.19-68.39-181.77 135.46z" />
           <path d="M725.01 943c-5.85 0-11.65-2.55-15.6-7.47l-82.38-102.46c-6.92-8.61-5.55-21.2 3.06-28.12s21.2-5.55 28.12 3.06l82.38 102.46c6.92 8.61 5.55 21.2-3.06 28.12a19.902 19.902 0 0 1-12.52 4.41zM873.69 835.67c-6.16 0-12.24-2.84-16.16-8.19l-79.24-108.26c-6.52-8.91-4.59-21.43 4.33-27.95 8.92-6.53 21.43-4.59 27.95 4.32l79.24 108.26c6.52 8.91 4.59 21.43-4.33 27.95a19.85 19.85 0 0 1-11.79 3.87z" />
         </svg>
-        <a href="#" className="text-xl">
-          Inventory
-        </a>
+            <a href="#" className="text-xl ">
+              Inventory
+            </a>
+            <div>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 mt-1 ml-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+            </div>
+            </div>
+          </div>
+          
+          <div className="ml-10 p-3 text-white">
+            {Ishow && (
+              <div>
+                <Link to="/dashboard/stocklist" className="hover:text-[#E74694]">Stock List</Link>
+                <br />
+                <Link to="/dashboard/purchase" className="hover:text-[#E74694]">Purchase</Link>
+                <br />
+                <Link to="/dashboard/return" className="hover:text-[#E74694]">Return</Link>
+                <br />
+                <Link to="/dashboard/suppliers"  className="hover:text-[#E74694]">Suppliers</Link>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-      <div className="flex justify-items-start space-x-5 p-5 ml-1 items-center hover:text-[#E74694] fill-current">
+      {/* customer */}
+      <div className="flex justify-items-start space-x-4 ml-1 p-5 items-center  hover:text-[#E74694] fill-current">
+        
+        <div className="w-full -mb-5">
+          <div className="flex justify-between">
+            <div className="flex justify-center items-center gap-x-5 cursor-pointer " onClick={() => setCshow(!Cshow)} >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                    </svg>
+
+            <a href="#" className="text-xl " >
+              Customer
+            </a>
+            <div>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 mt-1 ml-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+            </div>
+            </div>
+          </div>
+              
+          <div className="ml-10 p-3 text-white">
+            {Cshow && (
+              <div>
+                <Link to="/dashboard/customerdetails" className="hover:text-[#E74694]">Customer List</Link>
+                <br />
+                <Link to="/dashboard/customerprofile" className="hover:text-[#E74694]">Customer Profile</Link>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+       {/* sales */}
+       <div className="flex justify-items-start space-x-6 ml-0.5 p-5 items-center hover:text-[#E74694] fill-current">
         <svg
+          className="svg-icon h-6 w-6"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M341.8624 153.6C346.0608 119.9232 374.784 93.866667 409.6 93.866667h204.8c34.816 0 63.5392 26.056533 67.7376 59.733333H827.733333c37.704533 0 68.266667 30.562133 68.266667 68.266667v640c0 37.704533-30.562133 68.266667-68.266667 68.266666H196.266667c-37.704533 0-68.266667-30.562133-68.266667-68.266666V221.866667c0-37.704533 30.562133-68.266667 68.266667-68.266667h145.595733z m0 51.2H196.266667a17.066667 17.066667 0 0 0-17.066667 17.066667v640a17.066667 17.066667 0 0 0 17.066667 17.066666h631.466666a17.066667 17.066667 0 0 0 17.066667-17.066666V221.866667a17.066667 17.066667 0 0 0-17.066667-17.066667h-145.595733c-4.1984 33.6768-32.925867 59.733333-67.7376 59.733333H409.6c-34.816 0-63.5392-26.056533-67.7376-59.733333zM409.6 145.066667a17.066667 17.066667 0 0 0-17.066667 17.066666v34.133334a17.066667 17.066667 0 0 0 17.066667 17.066666h204.8a17.066667 17.066667 0 0 0 17.066667-17.066666v-34.133334a17.066667 17.066667 0 0 0-17.066667-17.066666H409.6z m52.8896 463.095466l186.794667-186.794666a25.6 25.6 0 1 1 36.206933 36.202666l-201.847467 201.8432a25.770667 25.770667 0 0 1-2.794666 3.310934 25.514667 25.514667 0 0 1-8.546134 5.653333 24.9472 24.9472 0 0 1-28.16-5.661867 26.5088 26.5088 0 0 1-2.3424-2.833066l-105.770666-105.770667a25.6 25.6 0 1 1 36.202666-36.202667l90.257067 90.2528z" />
+        </svg>
+        <Link to='/dashboard/sales' className="text-xl">
+          Sales
+        </Link>
+      </div>
+      {/* Account */}
+      <div className="flex justify-items-start space-x-4 ml-1 p-5 items-center  hover:text-[#E74694] fill-current">
+        
+        <div className="w-full -mb-5">
+          <div className="flex justify-between">
+            <div className="flex justify-center items-center gap-x-5 cursor-pointer" onClick={() => setEshow(!Eshow)}>
+            <svg
           className="svg-icon h-6 w-6"
           viewBox="0 0 1024 1024"
           version="1.1"
@@ -126,10 +219,37 @@ const LeftPart = () => {
           <path d="M1002.37312 542.75072c0 12.92288-10.477568 23.400448-23.400448 23.400448L669.06112 566.151168c-12.92288 0-23.400448-10.477568-23.400448-23.400448l0 0c0-12.92288 10.477568-23.400448 23.400448-23.400448l309.911552 0C991.895552 519.350272 1002.37312 529.82784 1002.37312 542.75072L1002.37312 542.75072z" />
           <path d="M1002.37312 666.13248c0 12.92288-10.477568 23.400448-23.400448 23.400448L669.06112 689.532928c-12.92288 0-23.400448-10.477568-23.400448-23.400448l0 0c0-12.92288 10.477568-23.400448 23.400448-23.400448l309.911552 0C991.895552 642.732032 1002.37312 653.2096 1002.37312 666.13248L1002.37312 666.13248z" />
           <path d="M1002.37312 604.442624c0 12.920832-10.477568 23.400448-23.400448 23.400448L669.06112 627.843072c-12.92288 0-23.400448-10.479616-23.400448-23.400448l0 0c0-12.92288 10.477568-23.400448 23.400448-23.400448l309.911552 0C991.895552 581.042176 1002.37312 591.519744 1002.37312 604.442624L1002.37312 604.442624z" />
-        </svg>
-        <a href="#" className="text-xl">
-          Accounts
-        </a>
+             </svg>
+            <a href="#" className="text-xl ">
+              Account
+            </a>
+            <div>
+            <svg 
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6 mt-1 ml-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+              />
+            </svg>
+            </div>
+            </div>
+          </div>
+          
+          <div className="ml-10 p-3 text-white">
+            {Eshow && (
+              <div>
+                <Link to="/dashboard/expenses" className="hover:text-[#E74694]">Expenses</Link>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
       
       

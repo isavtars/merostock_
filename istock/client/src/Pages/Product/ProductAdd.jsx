@@ -110,7 +110,7 @@ const [todolist,settodolist]=useState([])
                         <h1 className="font-semibold text-xl">Pricing Info</h1>
                       </div>
 
-                      <div className="items-centerbg-white mb-5 ">
+                      <div className="items-center bg-white mb-5 ">
                           <div className="p-3 space-y-2">
                             <label className="font-medium">
                               Product Price Old
@@ -397,8 +397,7 @@ const [todolist,settodolist]=useState([])
                   <div className="items-center mx-3">
                     <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full" onClick={uploadFile}>
                       Add
-                    </button>
-                    
+                    </button>          
                   </div>
                   </div>   
                 </div>

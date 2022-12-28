@@ -150,10 +150,6 @@ const NavBar = () => {
                           <div onClick={()=>dispatch(logout())}>Logout</div>
                         </div>
                       </Link>
-
-                      
-
-
                       </div>
                     </div>
                   </div>
@@ -169,7 +165,6 @@ const NavBar = () => {
                 strokeWidth="1.5"
                 stroke="currentColor"
                 className="w-6 h-6"
-                onClick={() => setOpen(!open)}
               >
                 <path
                   strokeLinecap="round"

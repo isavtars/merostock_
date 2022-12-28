@@ -1,12 +1,11 @@
-import React from "react";
-import LeftPart from "../../components/LeftPart";
-import NavBar from "../../components/NavBar";
-import RightPart from "../../components/RightPart";
+import React from 'react'
+import LeftPart from '../../components/LeftPart';
+import NavBar from '../../components/NavBar';
 
-const ProductDetails = () => {
+const Suppliers = () => {
   return (
     <>
-      <div className="bg-[#EBF5FF] pt-4">
+      <div className="bg-[#EBF5FF] pt-4 font-primaryText">
         <div className="xl:flex xl:justify-between">
             <div className="xl:w-1/4 hidden xl:block">
                 <LeftPart />
@@ -17,12 +16,23 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="space-y-3 md:flex md:items-center md:justify-between md:mx-3 border-b-2 lg:ml-8 mb-3 pb-3">
+                  <div>
                     <h1 className="text-center text-2xl font-primaryText font-semibold lg:ml-6 ">
-                      Product List
-                    </h1>  
+                      Suppliers Information
+                    </h1>
+                    </div>  
+                  <div>
+                  <button className="flex justify-center mx-auto lg:flex lg:justify-between items-center space-x-1 border-1 rounded-md p-2 bg-indigo-500 text-white lg:w-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+
+                     <h3>Add Suppliers</h3>
+                    </button>
+                  </div>
                 </div>
                 {/* product list */}
-                <div className="lg:ml-8 h-screen border-2 rounded-lg lg:mx-3">   
+                <div className="lg:ml-8 h-screen lg:mx-3 border-2 rounded-md">   
                 <div className="overflow-x-auto relative w-full">
                   <div className="md:flex md:justify-between space-y-3">
                   <span className="p-3">Show <input className="w-12 h-8" type="text" /> entries</span>
@@ -36,6 +46,7 @@ const ProductDetails = () => {
                  />
                   </div>
                   </div>
+
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase border-b-2">
                         <tr>
@@ -43,22 +54,19 @@ const ProductDetails = () => {
                                 ID
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Product
+                                Items
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Category
+                                Supplier
+                            </th>                          
+                            <th scope="col" className="py-3 px-6">
+                                Registration Date
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                Stock
+                                Mail
                             </th>
                             <th scope="col" className="py-3 px-6">
-                                In Stock
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Price
-                            </th>
-                            <th scope="col" className="py-3 px-6">
-                                Date Added
+                                Phone Number
                             </th>
                         </tr>
                     </thead>
@@ -67,73 +75,62 @@ const ProductDetails = () => {
                             <td className="py-4 px-6"> 
                             1
                             </td>
-                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
-                                <h2>Shirt</h2>
-                                
-                            </th>
                             <td className="py-4 px-6">
-                                plane shirt
+                               shirt
                             </td>
                             <td className="py-4 px-6">
-                                20
+                                Bibek Suppliers
                             </td>
                             <td className="py-4 px-6">
-                                20
+                                2022-12-25
                             </td>
                             <td className="py-4 px-6">
-                                Nrs.2999
+                                bibek@gmail.com
                             </td>
                             <td className="py-4 px-6">
-                                2022-08-12
+                              9843111113
                             </td>
                         </tr>
+
                         <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                             <td className="py-4 px-6"> 
                             1
                             </td>
-                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
-                                <h2>Shirt</h2>
-                            </th>
                             <td className="py-4 px-6">
-                                plane shirt
+                               shirt
                             </td>
                             <td className="py-4 px-6">
-                                20
+                                Bibek Suppliers
                             </td>
                             <td className="py-4 px-6">
-                                20
+                                2022-12-25
                             </td>
                             <td className="py-4 px-6">
-                                Nrs.2999
+                                bibek@gmail.com
                             </td>
                             <td className="py-4 px-6">
-                                2022-08-12
+                              9843111113
                             </td>
                         </tr>
+
                         <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
                             <td className="py-4 px-6"> 
                             1
                             </td>
-                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
-                                <h2>Shirt</h2>
-                            </th>
                             <td className="py-4 px-6">
-                                plane shirt
+                               shirt
                             </td>
                             <td className="py-4 px-6">
-                                20
+                                Bibek Suppliers
                             </td>
                             <td className="py-4 px-6">
-                                20
+                                2022-12-25
                             </td>
                             <td className="py-4 px-6">
-                                Nrs.2999
+                                bibek@gmail.com
                             </td>
                             <td className="py-4 px-6">
-                                2022-08-12
+                              9843111113
                             </td>
                         </tr>
                     </tbody>
@@ -144,7 +141,7 @@ const ProductDetails = () => {
           </div>
       </div>        
     </>
-  );
-};
+  )
+}
 
-export default ProductDetails;
+export default Suppliers
