@@ -3,7 +3,7 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-    {/* Responsive for large Devices */}
+    {/* Responsive htmlFor large Devices */}
     <div>
               {/* Revenue/Expenses */}
                 <div className="space-y-5 lg:space-y-0 lg:flex lg:gap-x-5  p-5 px-8 items-center justify-center max-w-2xl m-auto">

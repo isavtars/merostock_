@@ -2,6 +2,7 @@ import express from "express"
 import "dotenv/config"
 import authrouter from "./router/Authenticate.js"
 import productrouter from  "./router/Product.js"
+import profilerouter from "./router/profie.js"
 import cors from "cors"
 
 import connections from "../database/connections.js" //always
@@ -27,7 +28,8 @@ app.use("/auth",authrouter)
 //productRoute
 app.use("/productapi",productrouter)
 
-
+//profilerouting
+app.use("/profileapi",profilerouter)
 //server listting
 app.listen(port,()=>{
     console.log(`App is running succesfully ${port}`);
