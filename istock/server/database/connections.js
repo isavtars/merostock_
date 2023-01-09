@@ -8,6 +8,7 @@ const MONGODB=process.env.MONGODB;
 
 
 const connections =()=>{
+    mongoose.set('strictQuery', false);
     mongoose.connect(MONGODB,{}).then(()=>{
             
         console.log("dbconnected sucessfully");

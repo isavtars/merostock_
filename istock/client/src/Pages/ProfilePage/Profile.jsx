@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import LeftPart from "../../components/LeftPart";
 import NavBar from "../../components/NavBar";
 import profile from "../.././assets/profile.jpg";
@@ -14,6 +14,20 @@ const Profile = () => {
   const [open,setopen]=useState(false)
 
   const[profileuser,setprofileuser]=useState("")
+  const [getdata,setgetdata]=useState([])
+  useEffect(() => {
+   const getprofiledata=async()=>{
+    try{
+      const response=await api.get('profileapi/profileget?search=bishal pariyar',getdata)
+    setgetdata(response.data)
+    console.log(response.data)
+    }catch(err){
+      console.log(err)
+    }
+   }
+  getprofiledata();
+  }, [])
+  
   const formsubmitchange=(e)=>{
     setprofileuser({...profileuser,[e.target.name]:e.target.value})
     console.log(profileuser)
@@ -71,7 +85,13 @@ const Profile = () => {
                         alt="image"
                         className="w-16 h-16 rounded-md mr-4 cursor-pointer object-top object-cover"
                       />
-                      <h1 className="font-semibold">Bishal Pariyar</h1>
+                      {getdata.map((data,index)=>{
+                        return <div key={index}>
+                        <h1 className="font-semibold">{data.name}</h1>
+                        
+                        </div>
+                      })}
+                      
                       <h6 className="text-sm">24 Years , Bharatpur</h6>
                       <p className="text-center mx-2">
                         Lorem ipsum, dolor sit amet consectetur adipisicing
@@ -187,7 +207,7 @@ const Profile = () => {
                         <label htmlFor="" className="font-medium text-xl">Your Number</label>
                         <input
                         onChange={formsubmitchange}
-                          name="number"
+                          name="phone"
                           type="text"
                           className="mt-2 form-control block w-full px-4 py-1 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           placeholder=""

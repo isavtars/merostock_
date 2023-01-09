@@ -23,7 +23,7 @@ email:{
 },
 phone:{
     type:Number,
-    unique:true,
+    // unique:true,
     // required:true
 },
 

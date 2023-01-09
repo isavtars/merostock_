@@ -12,9 +12,11 @@ async createprofile(req,res){
 }
 //getprofile
 async getprofile(req,res){
+    const {search}=req.query;
+
     try {
-        const response=await profilemodel.find()
-        res.status(200).json({success:true,response})
+        const response=await profilemodel.find({$or:[{name:search}]});
+        res.status(200).json(response)
     } catch (error) {
         res.status(404).json({success:false,stack:error.stack})
     }
