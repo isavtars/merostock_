@@ -88,11 +88,11 @@ const Profile = () => {
                       {getdata.map((data,index)=>{
                         return <div key={index}>
                         <h1 className="font-semibold">{data.name}</h1>
-                        
+                        <h6 className="text-sm">{data.province},{data.country}</h6>
                         </div>
                       })}
                       
-                      <h6 className="text-sm">24 Years , Bharatpur</h6>
+                      
                       <p className="text-center mx-2">
                         Lorem ipsum, dolor sit amet consectetur adipisicing
                         elit. Exercitationem.
