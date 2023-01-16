@@ -4,21 +4,28 @@ import NavBar from "../../components/NavBar";
 import profile from "../.././assets/profile.jpg";
 import api from "../../api/constUrl"
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import swal from 'sweetalert'
 
 // Profileedits
 import Profileedits from "../../components/models/Profileredits/Profileedits.jsx"
 import { async } from "@firebase/util";
 
+
+
 const Profile = () => {
   const [open,setopen]=useState(false)
+  const user =useSelector((state)=>state.user.currentUser);
+
+
+
 
   const[profileuser,setprofileuser]=useState("")
   const [getdata,setgetdata]=useState([])
   useEffect(() => {
    const getprofiledata=async()=>{
     try{
-      const response=await api.get('profileapi/profileget?search=bishal pariyar',getdata)
+      const response=await api.get(`profileapi/profileget?search=${user.name}`,getdata);
     setgetdata(response.data)
     console.log(response.data)
     }catch(err){
@@ -36,10 +43,20 @@ const Profile = () => {
     e.preventDefault();
   try{
   const response =await api.post("profileapi/profilepost",profileuser)
+
+  if(response.data.success){
+    swal("Good job!", "Profile updated successfully!", "success");
+    setprofileuser("")
+    e.target.reset();
+  }
+  else{
+    swal("oops!", "please check your data again!", "error");
+  }
   console.log(response.data)
   
   }catch(error){
   console.log(error)
+  swal("oops!", "server errors", "error");
   }
   }
   return (
@@ -65,19 +82,21 @@ const Profile = () => {
                 
                 <div className="lg:w-2/4">
                   <div className="border-2 rounded-lg p-2 bg-white cursor-pointer">
-                    <div className="flex justify-between mx-2">
-                      <div>
-                        <h1 className="font-semibold text-lg">Profile</h1>
-                      </div>
-                      <div>
-                        <button  onClick={() => setopen(!open)} className="border-1 rounded-md p-2 bg-indigo-500 text-white">
-                         edit
-                        </button>
-                      {open && <Profileedits open={open} setopen={setopen} />}
-                  
-                
-                      </div>
-                    </div>
+                  <div className="flex justify-between mx-2">
+                  <div>
+                    <h1 className="font-semibold text-lg">Profile</h1>
+                  </div>
+                  <div>
+                    <button  onClick={() => setopen(!open)
+
+                    } className="border-1 rounded-md p-2 bg-indigo-500 text-white">
+                     Edit
+                     
+                    </button>
+                 
+                   
+                  </div>
+                </div>
 
                     <div className="flex flex-col items-center justify-center space-y-2.5">
                       <img
@@ -85,21 +104,23 @@ const Profile = () => {
                         alt="image"
                         className="w-16 h-16 rounded-md mr-4 cursor-pointer object-top object-cover"
                       />
-                      {getdata.map((data,index)=>{
-                        return <div key={index}>
-                        <h1 className="font-semibold">{data.name}</h1>
-                        <h6 className="text-sm">{data.province},{data.country}</h6>
-                        </div>
-                      })}
-                      
-                      
-                      <p className="text-center mx-2">
+
+                     
+                      {
+                        getdata?
+                         <>
+                        {open && <Profileedits  open={open} setopen={setopen}  id={getdata._id} />}
+
+                        <h1 className="font-semibold">{getdata.name}</h1>
+                        <h6 className="text-sm">{getdata.province},{getdata.country}</h6>
+
+                        <p className="text-center mx-2">
                         Lorem ipsum, dolor sit amet consectetur adipisicing
                         elit. Exercitationem.
-                      </p>
-                    </div>
+                       </p>
 
-                    <div className="mt-3 space-y-2">
+
+                         <div className="mt-3 space-y-2">
                       <div className="flex justify-start mx-4">
                         <div className="mx-3">
                           <svg
@@ -117,7 +138,7 @@ const Profile = () => {
                             />
                           </svg>
                         </div>
-                        <div>9807296187</div>
+                        <div>{getdata.phone}</div>
                       </div>
 
                       <div className="flex justify-start mx-4">
@@ -137,7 +158,7 @@ const Profile = () => {
                             />
                           </svg>
                         </div>
-                        <div>b@gmail.com</div>
+                        <div>{getdata.email}</div>
                       </div>
 
                       <div className="flex justify-start mx-4">
@@ -157,7 +178,7 @@ const Profile = () => {
                             />
                           </svg>
                         </div>
-                        <div>21 March, 2000</div>
+                        <div>{new Date().getFullYear()} /{new Date().getMonth()+1}/{new Date().getDate()}</div>
                       </div>
 
                       <div className="flex justify-start mx-4">
@@ -175,16 +196,31 @@ const Profile = () => {
                             />
                           </svg>
                         </div>
-                        <div>Bharatpur, Chitwan</div>
+                        <div>{getdata.country}</div>
                       </div>
                     </div>
+                    </>
+                         : "config your profile first"
+                      }
+
+
+
+
+                     
+                      
+                      
+                    
+                    </div>
+
+                  
                   </div>
                 </div>
 
                 {/* Right */}
                 <div className="lg:w-3/4">
+                
                   <div className="border-2 rounded-lg p-3 lg:px-5 bg-white cursor-pointer">
-                    <form>
+                    <form onSubmit={formsubmit}>
                       <div className="my-2 mb-5">
                         <p className="text-2xl mb-0 mr-4 font-semibold">
                           Profile Setting
@@ -290,7 +326,7 @@ const Profile = () => {
                       <div className="lg:text-left">
                         <button
                           type="submit"
-                          onClick={formsubmit}
+                          
                           className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase        rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg           focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150            ease-in-out"
                         >
                           Save
