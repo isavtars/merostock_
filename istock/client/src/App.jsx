@@ -34,13 +34,11 @@ console.log(user)
           <Route path='/register' element={<Register/>}/>
           <Route path='/' element={user? <Navigate to="/dashboard" replace />:<Login/>}></Route>   
           <Route path='/dashboard' element={!user? <Navigate to="/" replace />:<Dashboard />}></Route>
-<<<<<<< HEAD
+
           <Route path='/dashboard/productdetails' element={!user? <Navigate to="/" replace />:<ProductDetails />}></Route>
           <Route path='/dashboard/productadd' element={!user? <Navigate to="/" replace />:<ProductAdd/>}></Route>
           <Route path='/dashboard/productedit' element={!user? <Navigate to="/" replace />:<ProductEdit/>}></Route>
-=======
-        
->>>>>>> 0053f2e0160ba75b2d124cfe05cadc3bbd24454a
+          
           <Route path="/dashboard/profile" element={<Profile/>} />
           <Route path="/dashboard/sales" element={<SalesPage/>} />
           <Route path="/dashboard/stocklist" element={<StockList/>} />
