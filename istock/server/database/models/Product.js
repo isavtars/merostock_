@@ -6,15 +6,15 @@ import mongoose  from "mongoose";
     
 
  },
- productTitle:{
-    type:String,
-    required:true,
+//  productTitle:{
+//     type:String,
+//     required:true,
 
- },
- productIdentifierurl:{
-    type:String,
-    required:true, 
- },
+//  },
+//  productIdentifierurl:{
+//     type:String,
+//     required:true, 
+//  },
  image:{
     type:String,
     required:true,

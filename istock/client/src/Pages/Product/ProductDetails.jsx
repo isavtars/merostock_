@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useState,useEffect  } from "react";
+
 import LeftPart from "../../components/LeftPart";
 import NavBar from "../../components/NavBar";
 import RightPart from "../../components/RightPart";
+import api from "../../api/constUrl"
 
 const ProductDetails = () => {
+
+    const [product, setproduct] = useState([]);
+
+    useEffect(() => {
+      const getProduct=async()=>{
+       const response = await api.get("productapi/getproducts");
+       console.log(response.data);
+       setproduct(response.data);
+      };
+
+      getProduct();
+    }, [])
+    
   return (
     <>
       <div className="bg-[#EBF5FF] pt-4">
@@ -36,6 +51,7 @@ const ProductDetails = () => {
                  />
                   </div>
                   </div>
+
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase border-b-2">
                         <tr>
@@ -62,80 +78,40 @@ const ProductDetails = () => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>  
-                        <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tbody> 
+                      {
+
+                        product.map((data,index)=>{
+                           let  dateTimeFormat3 = new Intl.DateTimeFormat('en-US', data.createdAt);
+                            return <tr key={index}>
                             <td className="py-4 px-6"> 
-                            1
+                              {index+1}
                             </td>
                             <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
-                                <h2>Shirt</h2>
-                                
-                            </th>
+                                <img src={data.image} alt="img" className="h-20 w-20 object-cover rounded-md" />
+                                <h2>{data.productName}</h2>                               
+                           </th>
+                           <td className="py-4 px-6">
+                               {data.category}
+                            </td>
+
                             <td className="py-4 px-6">
-                                plane shirt
+                            {data.totalStock}
                             </td>
+
                             <td className="py-4 px-6">
-                                20
+                            {data.totalStock}
                             </td>
+
                             <td className="py-4 px-6">
-                                20
-                            </td>
-                            <td className="py-4 px-6">
-                                Nrs.2999
-                            </td>
-                            <td className="py-4 px-6">
-                                2022-08-12
-                            </td>
-                        </tr>
-                        <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td className="py-4 px-6"> 
-                            1
-                            </td>
-                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
-                                <h2>Shirt</h2>
-                            </th>
-                            <td className="py-4 px-6">
-                                plane shirt
-                            </td>
-                            <td className="py-4 px-6">
-                                20
-                            </td>
-                            <td className="py-4 px-6">
-                                20
-                            </td>
-                            <td className="py-4 px-6">
-                                Nrs.2999
-                            </td>
-                            <td className="py-4 px-6">
-                                2022-08-12
-                            </td>
-                        </tr>
-                        <tr className="border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td className="py-4 px-6"> 
-                            1
-                            </td>
-                            <th scope="row" className="py-2 px-3 flex justify-self-start items-center space-x-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80" alt="img" className="h-20 w-20 object-cover rounded-md" />
-                                <h2>Shirt</h2>
-                            </th>
-                            <td className="py-4 px-6">
-                                plane shirt
-                            </td>
-                            <td className="py-4 px-6">
-                                20
-                            </td>
-                            <td className="py-4 px-6">
-                                20
-                            </td>
-                            <td className="py-4 px-6">
-                                Nrs.2999
-                            </td>
-                            <td className="py-4 px-6">
-                                2022-08-12
-                            </td>
-                        </tr>
+                            {data.newPrice}
+                        </td>
+                        <td className="py-4 px-6">
+                            {dateTimeFormat3.format()}
+                        </td>
+                             </tr>
+                        })
+                      }   
                     </tbody>
                 </table>
                 </div>

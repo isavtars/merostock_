@@ -2,12 +2,13 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import profile from "../assets/profile.jpg";
-import { loginStart, loginSuccess, loginFailure, logout } from "../redux/userReducer"
+import {  logout } from "../redux/userReducer"
 import { useDispatch,useSelector } from 'react-redux';
 
 const NavBar = () => {
   let [open, setOpen] = useState(false);
   const dispatch=useDispatch();
+  const user = useSelector((state)=>state.user.currentUser)
   return (
     <>
       {/* Responsive Navbar */}
@@ -42,7 +43,7 @@ const NavBar = () => {
           {/* profile section */}
           <div className="flex items-center justify-center my-5 space-x-2">
             <div className="font-primaryText ">
-              <h1 className="font-bold cursor-pointer">Bishal Pariyar</h1>
+              <h1 className="font-bold cursor-pointer">{user.name}</h1>
               <h6>Admin Profile</h6>
             </div>
 
@@ -81,7 +82,7 @@ const NavBar = () => {
               />
               </div>
                     <div>
-                      <h1 className="font-semibold cursor-pointer text-sm">Bishal Pariyar</h1>
+                      <h1 className="font-semibold cursor-pointer text-sm">{user.name}</h1>
                        <h6 className="text-sm">Admin Profile</h6>
                     </div>
                   </div>
