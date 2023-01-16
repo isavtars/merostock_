@@ -228,7 +228,7 @@ const  productSubmit=async(e)=>{
                 <div className="space-y-3 md:flex md:items-center md:justify-between md:mx-3">
                   <div>
                     <h1 className="text-center text-2xl font-primaryText font-semibold lg:ml-6">
-                      Product Add
+                      Product Add sucessfully
                     </h1>
                   </div>
                   

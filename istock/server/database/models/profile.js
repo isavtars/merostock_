@@ -8,12 +8,12 @@ name:{
 },
 email:{
     type:String,
-    required:true,
+    
     //custome validate  with   validators ss
     validate(value){
       
         if(!validator.isEmail(value)){
-            throw new Error("your email is invalid")
+            throw new Error("your email is invalid");
         }
         
     } 
@@ -23,8 +23,9 @@ email:{
 },
 phone:{
     type:Number,
-    // unique:true,
-    // required:true
+    required:true,
+    
+   
 },
 
 image:{
@@ -33,11 +34,11 @@ image:{
 },
 shopname:{
     type:String,
-      required:true,
+ 
    },
    address:{
     type:String,
-      required:true,
+     
    },
    country:{
     type:String,
@@ -47,7 +48,7 @@ shopname:{
    },
    province:{
     type:String,
-      required:true,
+      
    },
    postalcode:{
     type:Number,
