@@ -26,7 +26,7 @@ class Product{
       res.status(404).json({stack:err.stack})
     }
    }
-   //editproductbyid
+   //updateproductbyid
    async editproductsbyid(req,res){
     const id =req.params.id;
     const update={...req.body};
@@ -41,7 +41,7 @@ class Product{
       res.status(404).json({stack:err.stack})
     }
    }
-   //findproductbyid
+   //editproductbyid
    async getproductsbyid(req,res){
     const id =req.params.id;
     try{
@@ -57,15 +57,44 @@ class Product{
 
    async deleteproductsbyid(req,res){
   
-    const {id}=req.params;
+    const id=req.params.id;
     try{
 
-      const response= await products.findOneAndDelete(id);
-      res.status(200).json({sucess:true,message:"sucessfully product  deleted "});
+      const response= await products.findOneAndDelete({ _id: id });
+      res.status(200).json({success:true,message:"sucessfully product  deleted "});
 
     }catch(err){
       res.status(404).json({stack:err.stack})
     }
    }
+   //search
+   async productsearchilter(req,res){
+    const search=req.query.productName;
+    try{
+  
+      if(search)  
+      {
+      // const data=await products.find({$or:[{productName:search},{category:search}]});
+      const data = await products.find({productName:{ $regex:search,$options: "$i" } })
+    
+      res.json(data)
+      }else{
+        res.json("there is no serch")
+      }
+      
+  
+    }
+    catch(err){
+      res.json({stack:err.stack})
+  console.log(search)
+  
+    }
+  
+  }
+  
+  
+  
+  
+  
 }
 export default Product;

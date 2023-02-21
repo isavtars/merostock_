@@ -1,10 +1,40 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import LeftPart from "../../components/LeftPart";
 import NavBar from "../../components/NavBar";
 import RightPart from "../../components/RightPart";
-
+import api from "../../api/constUrl"
+import { useParams } from "react-router-dom";
 const ProductEdit = () => {
-  return (
+  const {id}=useParams();
+  const idx= id.toString();
+const [product,setproduct]=useState("")
+  useEffect(() => {
+     const getproduct=async()=>{
+     try {
+      const response= await api.get(`/productapi/getbyid/${idx}`)
+      console.log(response.data)
+      setproduct(response.data)
+     } catch (error) {
+      console.log(error)
+     }
+
+     }
+    getproduct()
+  }, [])
+  
+  const productupdate=async(e)=>{
+    e.preventDefault()
+    try {
+      const response=api.post(`productapi/edit/${idx}`,{...product})
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const productchange=(e)=>{
+    setproduct({...product,[e.target.name]:e.target.value})
+  }
+    return (
     <>
       <div className="bg-[#EBF5FF] pt-4">
         <div className="xl:flex xl:justify-between">
@@ -41,6 +71,8 @@ const ProductEdit = () => {
                             </label>
                             <input
                               type="text"
+                              onChange={productchange}
+                              value={product. productOldprice}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nrs. 2000"
@@ -54,6 +86,8 @@ const ProductEdit = () => {
                             <input
                               type="text"
                               id="simple-search"
+                              onChange={productchange}
+                              value={product.newPrice}
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nrs. 5000"
                               required=""
@@ -74,16 +108,12 @@ const ProductEdit = () => {
                         >
                           Categories Selected
                         </label>
-                        <select
-                          multiple
-                          id="countries_multiple"
-                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        >
-                          <option value="">Pants</option>
-                          <option value="">Shirts</option>
-                          <option value="">Shoes</option>
-                          <option value="">Jackets</option>
-                        </select>
+                       <div>
+                       <input type="text" 
+                       onChange={productchange}
+                        value={product.category}
+                       />
+                        </div>
                       </div>
                     </div>
                     {/* size info */}
@@ -93,95 +123,23 @@ const ProductEdit = () => {
                       </div>
                       <div>
                         <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">XS</h1>
+                         
                           <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                         value={product.size}
+                         onChange={productchange}
+                            type="text"
+                          
+                           
                           />
                         </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">S</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">M</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">L</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">XL</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="flex items-center ml-3 space-x-3">
-                          <h1 className="font-medium">XXL</h1>
-                          <input
-                            id="default-checkbox"
-                            type="checkbox"
-                            value=""
-                            className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                          />
-                        </div>
+                      
+                        
                       </div>
                     </div>
                     {/* color info */}
-                    <div className="border-2 rounded-lg p-2 bg-white cursor-pointer mb-3">
-                      <div className="p-2 cursor-pointer hover:text-pink-500">
-                        <h1 className="font-semibold">Select Colors</h1>
-                      </div>
-
-                      <div className="flex items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
-                        <h1 className="font-semibold">Blue</h1>
-                        <input
-                          id="default-checkbox"
-                          type="checkbox"
-                          value=""
-                          className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
-                        <h1 className="font-semibold">Black</h1>
-                        <input
-                          id="default-checkbox"
-                          type="checkbox"
-                          value=""
-                          className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                      </div>
-                      <div className="flex items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
-                        <h1 className="font-semibold">Red</h1>
-                        <input
-                          id="default-checkbox"
-                          type="checkbox"
-                          value=""
-                          className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                        />
-                      </div>
-                    </div>
+                   
+                      
+                   
                     {/* inventory info */}
                     <div className="border-2 rounded-lg p-2 bg-white cursor-pointer mb-3">
                       <div className="flex items-center justify-between space-x-5  p-2 bg-white cursor-pointer hover:text-pink-500">
@@ -194,6 +152,8 @@ const ProductEdit = () => {
                             <label className="font-medium">SKU</label>
                             <input
                               type="text"
+                              value={product.code}
+                              onChange={productchange}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="SKU2022"
@@ -207,6 +167,8 @@ const ProductEdit = () => {
                             <input
                               type="text"
                               id="simple-search"
+                              value={product.totalStock}
+                              onChange={productchange}
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="1455"
                               required=""
@@ -230,6 +192,8 @@ const ProductEdit = () => {
                             <label className="font-medium">Name</label>
                             <input
                               type="text"
+                              value={product.productName}
+                              onChange={productchange}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block  px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nike Shoe"
@@ -297,7 +261,7 @@ const ProductEdit = () => {
 
                     {/* Add Button */}
                   <div className="items-center mx-3">
-                    <button className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full">
+                    <button onClick={productupdate} className="border-1 rounded-md p-2 bg-indigo-500 text-white w-full">
                       Save
                     </button>
                   </div>

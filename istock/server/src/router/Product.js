@@ -59,5 +59,7 @@ productrouter.get("/getbyid/:id",product.getproductsbyid)
 
 
 //delete the products
-productrouter.delete("/deletebyid/:id",tokenval,product.deleteproductsbyid)
+productrouter.delete("/deletebyid/:id",product.deleteproductsbyid)
+//searchproduct
+productrouter.get("/productsearch",product.productsearchilter)
 export default productrouter;

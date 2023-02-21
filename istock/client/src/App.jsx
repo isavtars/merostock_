@@ -37,7 +37,7 @@ console.log(user)
 
           <Route path='/dashboard/productdetails' element={!user? <Navigate to="/" replace />:<ProductDetails />}></Route>
           <Route path='/dashboard/productadd' element={!user? <Navigate to="/" replace />:<ProductAdd/>}></Route>
-          <Route path='/dashboard/productedit' element={!user? <Navigate to="/" replace />:<ProductEdit/>}></Route>
+          <Route path='/dashboard/productedit/:id' element={!user? <Navigate to="/" replace />:<ProductEdit/>}></Route>
           
           <Route path="/dashboard/profile" element={<Profile/>} />
           <Route path="/dashboard/sales" element={<SalesPage/>} />
