@@ -69,13 +69,13 @@ class Product{
    }
    //search
    async productsearchilter(req,res){
-    const search=req.query.productName;
+    const searchs=req.query.search ||"";
     try{
   
-      if(search)  
+      if(searchs)  
       {
       // const data=await products.find({$or:[{productName:search},{category:search}]});
-      const data = await products.find({productName:{ $regex:search,$options: "$i" } })
+      const data = await products.find({productName:{ $regex:searchs,$options: "i" } })
     
       res.json(data)
       }else{
