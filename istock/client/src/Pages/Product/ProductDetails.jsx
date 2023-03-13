@@ -8,21 +8,23 @@ import { Link } from "react-router-dom";
 import api from "../../api/constUrl"
 
 const ProductDetails = () => {
-  // const token = useSelector((state) => state.user.currentUser.token);
+    // const token = useSelector((state) => state.user.currentUser.token);
 
     const [product,setproduct] = useState([]);
     const [input,setinput] = useState('');
     const [dataitem, setdataitem] = useState([])
     const deleteproduct=async(id,idx)=>{
       try {
-       swal({
-         title: "Are you sure?",
-         text: "Once deleted, you will not be able to recover this imaginary file!",
-         icon: "warning",
-         buttons: true,
-         dangerMode: true,
-       })
-        const response=api.delete(`productapi/deletebyid/${id}`,{...product})
+        
+        
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        const response= await api.delete(`productapi/deletebyid/${id}`)
            if( response.data.success){
  
              const newproductlist=product.filter((filter,index)=>{
@@ -30,19 +32,19 @@ const ProductDetails = () => {
              })
              setproduct(newproductlist)
              swal( {
-               title: "admin delete success?",
-               text: "you item was delete",
+               title: "Deleted..",
+               text: "your item was deleted.",
                icon: "success",
              });
    
            }else{
-             swal({
-               title: "you are not admin?",
-               text: "you cant delete any items if you want to delete item you can login admin accounts",
-               icon: "warning",
-               
-             })
-       
+            
+            swal({
+              title: "ops!you are not admin.",
+              text: "You can not delete this item.",
+              icon: "warning",
+              
+            })
            }
          
         
@@ -56,7 +58,13 @@ const ProductDetails = () => {
      }
     useEffect(() => {
       const getProduct=async()=>{
-       const response = await api.get("productapi/getproducts");
+       const response = await api.get("productapi/getproducts",{
+        headers:{         
+          "Content-Type": "multipart/form-data",
+         
+        },
+        
+       });
        console.log(response.data);
        setproduct(response.data);
        setdataitem(response.data)
@@ -123,7 +131,8 @@ const ProductDetails = () => {
                     </h1>  
                 </div>
                 {/* product list */}
-                <div className="lg:ml-8 h-screen border-2 rounded-lg lg:mx-3">   
+                <div className="lg:ml-8 h-screen border-2 rounded-lg lg:mx-3"> 
+              
                 <div className="overflow-x-auto relative w-full">
                   <div className="md:flex md:justify-between space-y-3">
                   <span className="p-3">Show <input className="w-12 h-8" type="text" /> entries</span>
@@ -219,6 +228,7 @@ const ProductDetails = () => {
                     </tbody>
                 </table>
                 </div>
+              
                 </div>
                 </form>
             </div>

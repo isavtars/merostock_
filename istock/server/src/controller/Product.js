@@ -86,7 +86,7 @@ class Product{
     }
     catch(err){
       res.json({stack:err.stack})
-  console.log(search)
+  console.log(searchs)
   
     }
   

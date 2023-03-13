@@ -3,15 +3,17 @@ import LeftPart from "../../components/LeftPart";
 import NavBar from "../../components/NavBar";
 import RightPart from "../../components/RightPart";
 import api from "../../api/constUrl"
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 const ProductEdit = () => {
+  const navigate=useNavigate()
   const {id}=useParams();
   const idx= id.toString();
 const [product,setproduct]=useState("")
+const [ImageUpload, setImageUpload] = useState([])
   useEffect(() => {
      const getproduct=async()=>{
      try {
-      const response= await api.get(`/productapi/getbyid/${idx}`)
+    const response= await api.get(`/productapi/getbyid/${idx}`)
       console.log(response.data)
       setproduct(response.data)
      } catch (error) {
@@ -25,7 +27,23 @@ const [product,setproduct]=useState("")
   const productupdate=async(e)=>{
     e.preventDefault()
     try {
-      const response=api.post(`productapi/edit/${idx}`,{...product})
+      const response= await api.post(`productapi/edit/${idx}`,{...product,})
+      if(response){
+        swal( {
+          title: "Updated..",
+          text: "your item was updated..",
+          icon: "success",
+        });
+        // e.target.reset();
+        // setImageUpload("");
+       navigate("/dashboard/productdetails")
+      }else{
+        swal( {
+          title: "oops!..",
+          text: "your item can not updated.",
+          icon: "error",
+        });
+      }
       console.log(response.data)
     } catch (error) {
       console.log(error)
@@ -56,7 +74,9 @@ const [product,setproduct]=useState("")
                 </div>
 
                 <div className="flex flex-col lg:flex lg:flex-row lg:justify-between lg:mx-10 lg:mt-5 lg:space-x-5 p-3 lg:p-0 space-y-4">
+
                  {/* left */}
+                 
                   <div className="lg:w-1/4 lg:space-y-2 lg:pt-3">
                     {/* price info */}
                     <div className="border-2 rounded-lg p-2 bg-white cursor-pointer mb-3">
@@ -72,7 +92,8 @@ const [product,setproduct]=useState("")
                             <input
                               type="text"
                               onChange={productchange}
-                              value={product. productOldprice}
+                              name="productOldprice"
+                              value={product.productOldprice}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nrs. 2000"
@@ -88,6 +109,7 @@ const [product,setproduct]=useState("")
                               id="simple-search"
                               onChange={productchange}
                               value={product.newPrice}
+                              name="newPrice"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="Nrs. 5000"
                               required=""
@@ -112,6 +134,7 @@ const [product,setproduct]=useState("")
                        <input type="text" 
                        onChange={productchange}
                         value={product.category}
+                        name="category"
                        />
                         </div>
                       </div>
@@ -126,6 +149,7 @@ const [product,setproduct]=useState("")
                          
                           <input
                          value={product.size}
+                         name="size"
                          onChange={productchange}
                             type="text"
                           
@@ -153,6 +177,7 @@ const [product,setproduct]=useState("")
                             <input
                               type="text"
                               value={product.code}
+                              name="code"
                               onChange={productchange}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -168,6 +193,7 @@ const [product,setproduct]=useState("")
                               type="text"
                               id="simple-search"
                               value={product.totalStock}
+                              name="totalStock"
                               onChange={productchange}
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                               placeholder="1455"
@@ -193,6 +219,7 @@ const [product,setproduct]=useState("")
                             <input
                               type="text"
                               value={product.productName}
+                              name="productName"
                               onChange={productchange}
                               id="simple-search"
                               className="bg-gray-50 border font-primaryText border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block  px-5 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"

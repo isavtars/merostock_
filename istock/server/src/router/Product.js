@@ -39,6 +39,7 @@ const storage = multer.diskStorage({
 productrouter.post("/add",upload.single("image"),(req,res) =>
 {
  product.addproducts(req,res,imageName)
+//  product.editproductsbyid(req,res,imageName)
 }
 )
 
@@ -50,10 +51,10 @@ productrouter.post("/add",upload.single("image"),(req,res) =>
 
 //getproducts
 productrouter.get("/getproducts",product.getallitems)
-//editbyid
+//update
 productrouter.post("/edit/:id",product.editproductsbyid)
 
-//findbyid
+//editbyid
 productrouter.get("/getbyid/:id",product.getproductsbyid)
 
 

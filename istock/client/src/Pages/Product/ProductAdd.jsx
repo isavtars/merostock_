@@ -143,6 +143,7 @@ const  productSubmit=async(e)=>{
     const response=await api.post("productapi/add",{...input,image:ImageUpload},{
     headers:{
       "Content-Type": "multipart/form-data",
+      
     },
  });
     console.log(response.data);
